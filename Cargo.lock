@@ -436,6 +436,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "tcheran"
+version = "0.0.0"
+dependencies = [
+ "bullet_lib",
+]
+
+[[package]]
 name = "textwrap"
 version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

@@ -14,6 +14,7 @@ members = [
 #    "crates/bullet_hip_backend",
     "crates/bullet_lib",
     "crates/bullet_utils",
+    "crates/tcheran",
 ]
 
 [workspace.dependencies]
