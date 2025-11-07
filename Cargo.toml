@@ -10,8 +10,8 @@ edition = "2024"
 resolver = "2"
 members = [
     "crates/acyclib",
-    "crates/bullet_cuda_backend",
-    "crates/bullet_hip_backend",
+#    "crates/bullet_cuda_backend",
+#    "crates/bullet_hip_backend",
     "crates/bullet_lib",
     "crates/bullet_utils",
 ]
