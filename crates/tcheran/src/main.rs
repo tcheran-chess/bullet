@@ -18,10 +18,10 @@ fn main() {
     let dataset_path = "data/baseline.data";
 
     let hidden_size: usize = 256;
-    let wdl_proportion: f32 = 0.1;
+    let wdl_proportion: f32 = 0.3;
     let superbatches: usize = 40;
-    let initial_lr: f32 = 0.01;
-    let final_lr: f32 = 0.01 * 0.3f32.powi(5);
+    let initial_lr: f32 = 0.001;
+    let final_lr: f32 = 0.001 * 0.3f32.powi(5);
 
     let mut trainer = ValueTrainerBuilder::default()
         .use_threads(8)
