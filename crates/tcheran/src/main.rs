@@ -1,3 +1,4 @@
+use bullet_lib::value::loader::ViriBinpackLoader;
 use bullet_lib::{
     game::inputs::Chess768,
     nn::optimiser::AdamW,
@@ -6,17 +7,14 @@ use bullet_lib::{
         schedule::{TrainingSchedule, TrainingSteps, lr, wdl},
         settings::LocalSettings,
     },
-    value::{ValueTrainerBuilder, loader::DirectSequentialDataLoader},
+    value::ValueTrainerBuilder,
 };
 
 const SCALE: i32 = 400;
 const QA: i16 = 255;
 const QB: i16 = 64;
 
-
 fn main() {
-    let dataset_path = "data/baseline.data";
-
     let hidden_size: usize = 256;
     let wdl_proportion: f32 = 0.3;
     let superbatches: usize = 40;
@@ -63,7 +61,7 @@ fn main() {
 
     let settings = LocalSettings { threads: 8, test_set: None, output_directory: "checkpoints", batch_queue_size: 32 };
 
-    let dataloader = DirectSequentialDataLoader::new(&[dataset_path]);
+    let data = ViriBinpackLoader::new("data/baseline.data", 1024 * 8, 4, viriformat::dataformat::Filter::default());
 
-    trainer.run(&schedule, &settings, &dataloader);
+    trainer.run(&schedule, &settings, &data);
 }

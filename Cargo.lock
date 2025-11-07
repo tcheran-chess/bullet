@@ -440,6 +440,7 @@ name = "tcheran"
 version = "0.0.0"
 dependencies = [
  "bullet_lib",
+ "viriformat",
 ]
 
 [[package]]
