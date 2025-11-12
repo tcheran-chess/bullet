@@ -2,6 +2,7 @@ mod count;
 mod head;
 mod interleave;
 mod splat;
+mod relabel;
 
 use structopt::StructOpt;
 
@@ -11,6 +12,7 @@ pub enum ViriBinpackOptions {
     Interleave(interleave::InterleaveOptions),
     Count(count::CountOptions),
     Splat(splat::SplatOptions),
+    Relabel(relabel::RelabelOptions),
 }
 
 impl ViriBinpackOptions {
@@ -20,6 +22,7 @@ impl ViriBinpackOptions {
             Self::Head(options) => options.run(),
             Self::Count(options) => options.run(),
             Self::Splat(options) => options.run(),
+            Self::Relabel(options) => options.run(),
         }
     }
 }
