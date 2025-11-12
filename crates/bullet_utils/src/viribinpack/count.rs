@@ -20,6 +20,10 @@ impl CountOptions {
         let mut games = 0usize;
         let mut positions = 0usize;
 
+        let mut wins = 0;
+        let mut losses = 0;
+        let mut draws = 0;
+
         let mut buffer = Vec::new();
 
         while let Ok(game) = Game::deserialise_from(&mut reader, buffer) {
@@ -30,6 +34,13 @@ impl CountOptions {
                 print!("Counted {games} games\r");
             }
 
+
+            match game.outcome() {
+                viriformat::dataformat::WDL::Win => wins += 1,
+                viriformat::dataformat::WDL::Draw => draws += 1,
+                viriformat::dataformat::WDL::Loss => losses += 1,
+            }
+
             buffer = game.moves;
             buffer.clear();
         }
@@ -38,6 +49,7 @@ impl CountOptions {
         println!("Summary:");
         println!("Games = {games}");
         println!("Positions = {positions}");
+        println!("Wins = {wins}, Draws = {draws}, Losses = {losses}");
         println!("Bytes per position = {}", bytes as f64 / positions as f64);
 
         Ok(())
