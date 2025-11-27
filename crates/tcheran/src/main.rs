@@ -18,8 +18,6 @@ fn main() {
     let hidden_size: usize = 768;
     let wdl_proportion: f32 = 0.4;
     let superbatches: usize = 40;
-    let initial_lr: f32 = 0.001;
-    let final_lr: f32 = 0.001 * 0.3f32.powi(5);
 
     let mut trainer = ValueTrainerBuilder::default()
         .use_threads(8)
@@ -55,7 +53,7 @@ fn main() {
             end_superbatch: superbatches,
         },
         wdl_scheduler: wdl::ConstantWDL { value: wdl_proportion },
-        lr_scheduler: lr::CosineDecayLR { initial_lr, final_lr, final_superbatch: superbatches },
+        lr_scheduler: lr::CosineDecayLR { initial_lr: 0.001, final_lr: 0.001 * 0.3f32.powi(5), final_superbatch: superbatches },
         save_rate: 10,
     };
 
