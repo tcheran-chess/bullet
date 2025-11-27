@@ -16,7 +16,7 @@ const QB: i16 = 64;
 
 fn main() {
     let hidden_size: usize = 768;
-    let wdl_proportion: f32 = 0.3;
+    let wdl_proportion: f32 = 0.4;
     let superbatches: usize = 40;
     let initial_lr: f32 = 0.001;
     let final_lr: f32 = 0.001 * 0.3f32.powi(5);
