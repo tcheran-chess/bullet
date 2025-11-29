@@ -15,9 +15,9 @@ const QA: i16 = 255;
 const QB: i16 = 64;
 
 fn main() {
-    let hidden_size: usize = 768;
+    let hidden_size: usize = 1024;
     let wdl_proportion: f32 = 0.4;
-    let superbatches: usize = 40;
+    let superbatches: usize = 80;
 
     let mut trainer = ValueTrainerBuilder::default()
         .use_threads(8)
